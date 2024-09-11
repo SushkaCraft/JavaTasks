@@ -75,7 +75,7 @@ public class Main
 	    
 		int N = 5, M = 7, K = 3;
 		
-		double S = (1.0 / (N + M + K)) * sum(N, M, K);
+		double S = 1.0 / (N + M + K) * sum(N, M, K);
 		
 		System.out.println(S);
 	}
@@ -87,11 +87,13 @@ public class Main
 	    double i, j, t;
 	    
 	    for (i = 1; i <= n; i++){
-    	    for (j = 1; j <= m; j++){
+    	    	for (j = 1; j <= m; j++){
 	            for (t = 1; t <= k; t++) sum += (j*j)/(((i+t)*(i+t)*(i+t))-t);
-    	    }
+    	    	}
 	    }
 	    
 	    return sum;
 	}
 }
+
+//Out - 2.9489856742660523
