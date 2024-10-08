@@ -120,7 +120,6 @@ public class Main
         Comparison(10, 5);
         Comparison(3, 8);
         Comparison(5, 5);
-        
     }
     
     public static void Comparison(int a, int b){
