@@ -72,7 +72,6 @@ public class Main
     public static void neYavnoe(double a){
         double A = a;
         float fA = Math.round(a);
-        // int intA = fA;
         System.out.println("neYavnoe " + fA);
         System.out.println();
     }
@@ -153,7 +152,6 @@ public class Main
     public static void neYavnoe(double a){
         double A = a;
         float fA = Math.round(a);
-        // int intA = fA;
         System.out.println("neYavnoe " + fA);
         System.out.println();
     }
