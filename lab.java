@@ -1,4 +1,4 @@
-//Variant 2
+//Variant 1
 // First
 public class Main
 {
@@ -70,9 +70,9 @@ public class Main
     }
     
     public static void neYavnoe(double a){
-        double A = a;
-        float fA = Math.round(a);
-        System.out.println("neYavnoe " + fA);
+        int A = 0;
+        A += a;
+        System.out.println("neYavnoe " + A);
         System.out.println();
     }
     
@@ -150,9 +150,9 @@ public class Main
     }
     
     public static void neYavnoe(double a){
-        double A = a;
-        float fA = Math.round(a);
-        System.out.println("neYavnoe " + fA);
+        int A = 0;
+        A += a;
+        System.out.println("neYavnoe " + A);
         System.out.println();
     }
     
@@ -230,9 +230,9 @@ public class Main
     }
     
     public static void neYavnoe(double a){
-        double A = a;
-        float fA = Math.round(a);
-        System.out.println("neYavnoe " + fA);
+        int A = 0;
+        A += a;
+        System.out.println("neYavnoe " + A);
         System.out.println();
     }
     
@@ -309,9 +309,87 @@ public class Main
     }
     
     public static void neYavnoe(double a){
-        double A = a;
-        float fA = Math.round(a);
-        System.out.println("neYavnoe " + fA);
+        int A = 0;
+        A += a;
+        System.out.println("neYavnoe " + A);
+        System.out.println();
+    }
+    
+}
+//Variant 5
+//First
+public class Main
+{
+    public static void main(String[] args) {
+        int a = 255, b = -100, c = 0;
+        
+        String strA = String.valueOf(a);
+        String strB = String.valueOf(b);
+        String strC = String.valueOf(c);
+        
+        System.out.println("int to str: " + strA + " " + strB + " " + strC);
+        
+        System.out.println("str to int: " + Integer.parseInt(strA) + " " + Integer.parseInt(strB)+ " " + Integer.parseInt(strC));
+        
+    }
+}
+// Second
+public class Main
+{
+    public static void main(String[] args) {
+        logicalCalculator(true, true);
+        logicalCalculator(true, false);
+        logicalCalculator(false, true);
+        logicalCalculator(false, false);
+    }
+    
+    public static void logicalCalculator(boolean v1, boolean v2){
+        System.out.println("AND: " + (v1 && v2));
+        System.out.println("OR: " + (v1 || v2));
+        System.out.println("NOT v1: " + (!v1));
+        System.out.println("NOT v1: " + (!v2));
+        System.out.println();
+    }
+}
+// Third
+public class Main
+{
+    public static void main(String[] args) {
+        Comparison(9, 4);
+        Comparison(2, 7);
+        Comparison(6, 6);
+    }
+    
+    public static void Comparison(int a, int b){
+        if (a > b){
+            System.out.println("Первая > Второй");
+        } else if(a < b){
+            System.out.println("Первая < Второй");
+        } else {
+            System.out.println("Первая = Второй");
+        }
+    }
+}
+// Fourth
+public class Main
+{
+    public static void main(String[] args) {
+        Yavnoe(105.56);
+        neYavnoe(105.56);
+        Yavnoe(57.845489);
+        neYavnoe(57.845489);
+    }
+    
+    public static void Yavnoe(double a){
+        int A = (int) a;
+        System.out.println("Yavnoe " + A);
+        System.out.println();
+    }
+    
+    public static void neYavnoe(double a){
+        int A = 0;
+        A += a;
+        System.out.println("neYavnoe " + A);
         System.out.println();
     }
     
