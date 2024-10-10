@@ -2,16 +2,18 @@
 // V1
 import java.util.Scanner;
 
-public class InputString {
+import java.util.Scanner;
+
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите строку: ");
-        String input = scanner.nextLine();
         
-        if (input != null && !input.isEmpty()) {
-            System.out.println("Вы ввели строку: " + input);
+        if (scanner.hasNext()) {
+            String inputString = scanner.next();
+            System.out.println("Вы ввели строку: " + inputString);
         } else {
-            System.out.println("Ошибка: введена пустая строка.");
+            System.out.println("Ошибка: Введена не строка.");
         }
     }
 }
@@ -19,7 +21,7 @@ public class InputString {
 // V2
 import java.util.Scanner;
 
-public class InputInt {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите целое число: ");
@@ -36,7 +38,7 @@ public class InputInt {
 // V3
 import java.util.Scanner;
 
-public class InputBoolean {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите true или false: ");
@@ -53,7 +55,7 @@ public class InputBoolean {
 // V4
 import java.util.Scanner;
 
-public class InputDouble {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите дробное число (double): ");
@@ -70,7 +72,7 @@ public class InputDouble {
 // V5
 import java.util.Scanner;
 
-public class InputFloat {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите дробное число (float): ");
@@ -87,7 +89,7 @@ public class InputFloat {
 // V6
 import java.util.Scanner;
 
-public class InputChar {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите символ: ");
@@ -106,7 +108,7 @@ public class InputChar {
 // V1
 import java.util.Scanner;
 
-public class StudentVariant5 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите номер студента: ");
@@ -119,7 +121,7 @@ public class StudentVariant5 {
 // V2
 import java.util.Scanner;
 
-public class StudentVariant7 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите номер студента: ");
@@ -132,7 +134,7 @@ public class StudentVariant7 {
 // V3
 import java.util.Scanner;
 
-public class StudentVariant8 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите номер студента: ");
@@ -145,7 +147,7 @@ public class StudentVariant8 {
 // V4
 import java.util.Scanner;
 
-public class StudentVariant5 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите номер студента: ");
@@ -158,7 +160,7 @@ public class StudentVariant5 {
 //V5
 import java.util.Scanner;
 
-public class StudentVariant11 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите номер студента: ");
@@ -171,7 +173,7 @@ public class StudentVariant11 {
 //V6
 import java.util.Scanner;
 
-public class StudentVariant15 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите номер студента: ");
@@ -184,7 +186,7 @@ public class StudentVariant15 {
 // Zadanie 3
 import java.util.Scanner;
 
-public class EvenOddChecker {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите целое число: ");
@@ -201,7 +203,7 @@ public class EvenOddChecker {
 // Zadanie 4
 import java.util.Scanner;
 
-public class CinemaTicket {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите ваш возраст: ");
