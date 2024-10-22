@@ -312,3 +312,35 @@ public class Main
 	    }
 	}
 }
+
+// I would use the following regex pattern to assert your requirements:
+
+// ^(?!.*[^A-Za-z0-9])(?=.{10,}).*\\d.*\\d.*$
+// This pattern says to:
+
+// ^                   from the start of the password
+// (?!.*[^A-Za-z0-9])  look ahead and assert that we do NOT see any non letters or digits
+// (?=.{10,})          look ahead and assert that password length be 10 or longer
+// .*\\d.*\\d.*        then match any pattern so long as two digits be present
+// $                   end of the password
+// I would probably just directly use String#matches here:
+
+// Scanner scan = new Scanner(System.in);
+// String password = scan.nextLine();
+// if (password.matches("(?!.*[^A-Za-z0-9])(?=.{10,}).*\\d.*\\d.*")) {
+//     System.out.println("Password is valid");
+// }
+// Note that we drop the ^ and $ anchors from the regex pattern when using it with String#matches because this method implicitly applies the pattern to the entire string input.
+
+// String password = "ABC123@";
+// int numChars = password.replaceAll("(?i)[^A-Z]+", "").length();
+// int numDigits = password.replaceAll("\\D+", "").length();
+// int numSpecial = password.replaceAll("[^!@#$%^&*()_+.-]", "").length();
+
+// if (numChars >=1 && numChars <= 6 && numDigits >= 1 && numDigits <= 10 &&
+//     numSpecial <= 1) {
+//     System.out.println("password is valid");
+// }
+// else {
+//     System.out.println("password is invalid");
+// }
