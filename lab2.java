@@ -284,3 +284,31 @@ public class Main {
         }
     }
 }
+
+//Zadanie 5
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner in = new Scanner(System.in);
+	    System.out.println("Enter password");
+	    String password = in.nextLine();
+	    
+	    if(password.length() < 8){
+	        System.out.println("err<8");
+	    } else{
+	        boolean hasUpperCase = false;
+	        boolean hasDigit = false;
+	        
+	        for(char c : password.toCharArray()){
+	            if(Character.isUpperCase(c)) hasUpperCase = true;
+	            if(Character.isDigit(c)) hasDigit = true;
+	            if(hasDigit && hasUpperCase) break;
+	        }
+	        
+	        if(hasDigit && hasUpperCase) System.out.println("Correct");
+	        else System.out.println("Error");
+	    }
+	}
+}
