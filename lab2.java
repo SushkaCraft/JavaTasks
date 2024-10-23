@@ -344,3 +344,372 @@ public class Main
 // else {
 //     System.out.println("password is invalid");
 // }
+
+// Zadanie 6
+
+//V1
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите тип фигуры (круг, квадрат, прямоугольник): ");
+        String shapeType = scanner.nextLine().toLowerCase();
+
+        switch (shapeType) {
+            case "круг":
+                System.out.println("Введите радиус круга: ");
+                double radius = scanner.nextDouble();
+                double circleArea = Math.PI * Math.pow(radius, 2);
+                System.out.println("Площадь круга: " + circleArea);
+                break;
+            case "квадрат":
+                System.out.println("Введите длину стороны квадрата: ");
+                double side = scanner.nextDouble();
+                double squareArea = Math.pow(side, 2);
+                System.out.println("Площадь квадрата: " + squareArea);
+                break;
+            case "прямоугольник":
+                System.out.println("Введите длину и ширину прямоугольника: ");
+                double length = scanner.nextDouble();
+                double width = scanner.nextDouble();
+                double rectangleArea = length * width;
+                System.out.println("Площадь прямоугольника: " + rectangleArea);
+                break;
+            default:
+                System.out.println("Неизвестный тип фигуры.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите 'C' для конвертации в Фаренгейты или 'F' для конвертации в Цельсии: ");
+        String scale = scanner.nextLine().toUpperCase();
+
+        if (scale.equals("C")) {
+            System.out.println("Введите температуру в Цельсиях: ");
+            double celsius = scanner.nextDouble();
+            double fahrenheit = (celsius * 9 / 5) + 32;
+            System.out.println("Температура в Фаренгейтах: " + fahrenheit);
+        } else if (scale.equals("F")) {
+            System.out.println("Введите температуру в Фаренгейтах: ");
+            double fahrenheit = scanner.nextDouble();
+            double celsius = (fahrenheit - 32) * 5 / 9;
+            System.out.println("Температура в Цельсиях: " + celsius);
+        } else {
+            System.out.println("Неверный ввод.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V3
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите стоимость товара: ");
+        double price = scanner.nextDouble();
+
+        System.out.println("Введите скидку в процентах: ");
+        double discount = scanner.nextDouble();
+
+        if (discount >= 0 && discount <= 100) {
+            double finalPrice = price - (price * discount / 100);
+            System.out.println("Стоимость товара со скидкой: " + finalPrice);
+        } else {
+            System.out.println("Некорректное значение скидки.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V4
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите длины сторон треугольника:");
+        double a = scanner.nextDouble();
+        double b = scanner.nextDouble();
+        double c = scanner.nextDouble();
+
+        if (a == b && b == c) {
+            System.out.println("Треугольник равносторонний.");
+        } else if (a == b || b == c || a == c) {
+            System.out.println("Треугольник равнобедренный.");
+        } else {
+            System.out.println("Треугольник разносторонний.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V5
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите номер месяца (1-12): ");
+        int month = scanner.nextInt();
+
+        switch (month) {
+            case 12:
+            case 1:
+            case 2:
+                System.out.println("Зима.");
+                break;
+            case 3:
+            case 4:
+            case 5:
+                System.out.println("Весна.");
+                break;
+            case 6:
+            case 7:
+            case 8:
+                System.out.println("Лето.");
+                break;
+            case 9:
+            case 10:
+            case 11:
+                System.out.println("Осень.");
+                break;
+            default:
+                System.out.println("Некорректный номер месяца.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V6
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите номер дня недели (1-7): ");
+        int day = scanner.nextInt();
+
+        switch (day) {
+            case 1:
+                System.out.println("Понедельник.");
+                break;
+            case 2:
+                System.out.println("Вторник.");
+                break;
+            case 3:
+                System.out.println("Среда.");
+                break;
+            case 4:
+                System.out.println("Четверг.");
+                break;
+            case 5:
+                System.out.println("Пятница.");
+                break;
+            case 6:
+                System.out.println("Суббота.");
+                break;
+            case 7:
+                System.out.println("Воскресенье.");
+                break;
+            default:
+                System.out.println("Некорректный номер дня недели.");
+        }
+
+        scanner.close();
+    }
+}
+
+// Zadanie 7
+//V1
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите год: ");
+        int year = scanner.nextInt();
+
+        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+            System.out.println(year + " является високосным годом.");
+        } else {
+            System.out.println(year + " не является високосным годом.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите вес посылки (в кг): ");
+        double weight = scanner.nextDouble();
+
+        System.out.println("Введите расстояние доставки (в км): ");
+        int distance = scanner.nextInt();
+
+        int tariff;
+        switch (distance / 100) {
+            case 0:
+            case 1:
+                tariff = 50;
+                break;
+            case 2:
+            case 3:
+                tariff = 100;
+                break;
+            case 4:
+            case 5:
+                tariff = 150;
+                break;
+            default:
+                tariff = 200;
+        }
+
+        double cost = weight * tariff;
+        System.out.println("Стоимость доставки: " + cost + " рублей.");
+
+        scanner.close();
+    }
+}
+
+//V3
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите строку: ");
+        String inputString = scanner.nextLine();
+
+        System.out.println("Введите символ: ");
+        char inputChar = scanner.nextLine().charAt(0);
+
+        if (inputString.indexOf(inputChar) != -1) {
+            System.out.println("Символ '" + inputChar + "' есть в строке.");
+        } else {
+            System.out.println("Символ '" + inputChar + "' отсутствует в строке.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V4
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите строку: ");
+        String inputString = scanner.nextLine().toLowerCase();
+
+        int vowelCount = 0;
+        for (int i = 0; i < inputString.length(); i++) {
+            char ch = inputString.charAt(i);
+            switch (ch) {
+                case 'а':
+                case 'е':
+                case 'ё':
+                case 'и':
+                case 'о':
+                case 'у':
+                case 'ы':
+                case 'э':
+                case 'ю':
+                case 'я':
+                    vowelCount++;
+                    break;
+                default:
+                    // Не гласная
+            }
+        }
+
+        System.out.println("Количество гласных в строке: " + vowelCount);
+
+        scanner.close();
+    }
+}
+
+//V5
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите строку: ");
+        String inputString = scanner.nextLine().toLowerCase().replaceAll("\\s+", "");
+
+        String reversedString = new StringBuilder(inputString).reverse().toString();
+
+        if (inputString.equals(reversedString)) {
+            System.out.println("Строка является палиндромом.");
+        } else {
+            System.out.println("Строка не является палиндромом.");
+        }
+
+        scanner.close();
+    }
+}
+
+//V6
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Меню:");
+        System.out.println("1. Пункт 1");
+        System.out.println("2. Пункт 2");
+        System.out.println("3. Пункт 3");
+        System.out.println("Выберите пункт меню (1-3):");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Вы выбрали Пункт 1.");
+                break;
+            case 2:
+                System.out.println("Вы выбрали Пункт 2.");
+                break;
+            case 3:
+                System.out.println("Вы выбрали Пункт 3.");
+                break;
+            default:
+                System.out.println("Некорректный выбор.");
+        }
+
+        scanner.close();
+    }
+}
