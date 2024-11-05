@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-class Product {
+class Product implements ID {
     private int id;
     private String name;
     private String description;
@@ -14,14 +13,6 @@ class Product {
     private int discount;
     private String arrivalDate;
     private int warranty;
-
-    public enum Category {
-        ELECTRONICS,
-        FURNITURE,
-        CLOTHING,
-        BEAUTY,
-        TOYS
-    }
 
     public Product(int id, String name, String description, double price, boolean available, Category category, String brand, int discount, double rating, String arrivalDate, int warranty) {
         this.id = id;
@@ -35,5 +26,15 @@ class Product {
         this.rating = rating;
         this.arrivalDate = arrivalDate;
         this.warranty = warranty;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 }
