@@ -1,4 +1,4 @@
-// v2
+// v3
 import java.util.*;
 
 class Server {
@@ -89,20 +89,22 @@ public class Main {
             System.out.println("Iteration " + (i + 1) + ":");
             List<Server> servers = Arrays.asList(a, b, c, d, e, f);
 
-            Map<Server, Integer> tempUsers = new HashMap<>();
-            servers.forEach(server -> tempUsers.put(server, server.users));
+            Map<Server, Integer> tempChanges = new HashMap<>();
+            servers.forEach(server -> tempChanges.put(server, 0));
 
             for (Server server : servers) {
                 Map<Server, Integer> redistribution = server.calculateRedistribution();
                 for (Map.Entry<Server, Integer> entry : redistribution.entrySet()) {
                     Server toServer = entry.getKey();
                     int usersToTransfer = entry.getValue();
-                    tempUsers.put(server, tempUsers.get(server) - usersToTransfer);
-                    tempUsers.put(toServer, tempUsers.getOrDefault(toServer, 0) + usersToTransfer);
+                    tempChanges.put(server, tempChanges.get(server) - usersToTransfer);
+                    tempChanges.put(toServer, tempChanges.getOrDefault(toServer, 0) + usersToTransfer);
                 }
             }
 
-            servers.forEach(server -> server.users = tempUsers.get(server));
+            for (Server server : servers) {
+                server.users += tempChanges.get(server);
+            }
 
             int totalUsers = servers.stream().mapToInt(server -> server.users).sum();
             if (totalUsers != 180) {
