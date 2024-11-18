@@ -1,4 +1,4 @@
-// v1
+// v2
 import java.util.*;
 
 class Server {
@@ -22,16 +22,26 @@ class Server {
         outgoingLinks.add(link);
     }
 
-    public void redistributeUsers() {
+    public Map<Server, Integer> calculateRedistribution() {
+        Map<Server, Integer> transferMap = new HashMap<>();
         int totalPriority = outgoingLinks.stream().mapToInt(link -> link.priority).sum();
-        if (totalPriority == 0) return;
+        if (totalPriority == 0 || users == 0) return transferMap;
 
         int usersPerPart = users / totalPriority;
+        int remainder = users;
+
         for (Link link : outgoingLinks) {
             int usersToTransfer = link.priority * usersPerPart;
-            link.toServer.users += usersToTransfer;
-            this.users -= usersToTransfer;
+            transferMap.put(link.toServer, usersToTransfer);
+            remainder -= usersToTransfer;
         }
+
+        if (remainder > 0) {
+            Link maxPriorityLink = Collections.max(outgoingLinks, Comparator.comparingInt(link -> link.priority));
+            transferMap.put(maxPriorityLink.toServer, transferMap.getOrDefault(maxPriorityLink.toServer, 0) + remainder);
+        }
+
+        return transferMap;
     }
 
     @Override
@@ -74,13 +84,30 @@ public class Main {
         }
 
         int iterations = 5;
-      
+        
         for (int i = 0; i < iterations; i++) {
             System.out.println("Iteration " + (i + 1) + ":");
             List<Server> servers = Arrays.asList(a, b, c, d, e, f);
 
+            Map<Server, Integer> tempUsers = new HashMap<>();
+            servers.forEach(server -> tempUsers.put(server, server.users));
+
             for (Server server : servers) {
-                server.redistributeUsers();
+                Map<Server, Integer> redistribution = server.calculateRedistribution();
+                for (Map.Entry<Server, Integer> entry : redistribution.entrySet()) {
+                    Server toServer = entry.getKey();
+                    int usersToTransfer = entry.getValue();
+                    tempUsers.put(server, tempUsers.get(server) - usersToTransfer);
+                    tempUsers.put(toServer, tempUsers.getOrDefault(toServer, 0) + usersToTransfer);
+                }
+            }
+
+            servers.forEach(server -> server.users = tempUsers.get(server));
+
+            int totalUsers = servers.stream().mapToInt(server -> server.users).sum();
+            if (totalUsers != 180) {
+                System.out.println("Ошибка: Общее количество пользователей изменилось! Сейчас: " + totalUsers);
+                break;
             }
 
             servers.forEach(System.out::println);
