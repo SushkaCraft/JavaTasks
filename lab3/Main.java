@@ -1,41 +1,37 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
-    private static List<Product> productList = new ArrayList<>();
-    private static List<Order> orderList = new ArrayList<>();
-    private static List<User> userList = new ArrayList<>();
-    
+    private static List<Product> products = new ArrayList<>();
+    private static List<Category> categories = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-      
-        initializeData();
+        Admin admin = new Admin(1, "Admin", "Smith", "Admin Address", "555-0000", "admin@example.com");
+        Customer customer = new Customer(2, "John", "Doe", "123 Elm St", "555-1234", "john@example.com");
 
-        System.out.println("Welcome to the online store!");
-        System.out.println("1. View Products");
-        System.out.println("2. Exit");
+        Category electronics = new Category(1, "Electronics", "Electronic items");
+        categories.add(electronics);
+        Product laptop = new Product(1, "Laptop", "High-end gaming laptop", 1500, true, electronics, "Dell", 10, 4.8, "2023-09-01", 2);
+        products.add(laptop);
+
+        System.out.println("Выберите режим: 1 - Администратор, 2 - Покупатель");
         int choice = scanner.nextInt();
 
-        switch (choice) {
-            case 1:
-                viewProducts();
-                break;
-            case 2:
-                System.out.println("Exiting...");
-                break;
-            default:
-                System.out.println("Invalid choice.");
+        if (choice == 1) {
+            admin.addProduct(products, laptop);
+            admin.editProduct(laptop, "Gaming Laptop", "Updated description", 1600, true, electronics, "Asus", 15, 4.9, "2023-09-10", 3);
+            admin.deleteProduct(products, laptop);
+        } else if (choice == 2) {
+            customer.addToFavorites(laptop);
+            customer.addToCart(laptop);
+            customer.searchProduct(products, "laptop").forEach(product -> System.out.println("Найден продукт: " + product.getName()));
+            customer.placeOrder("Main Store", "Delivery", 2000);
+        } else {
+            System.out.println("Неверный выбор.");
         }
 
         scanner.close();
-    }
-
-    private static void initializeData() {
-        productList.add(new Product(1, "Product A", "Description A", 100.0, true, "Category 1", "Brand A", 0.0, 5.0, "2024-10-01", "1 year"));
-        productList.add(new Product(2, "Product B", "Description B", 200.0, true, "Category 2", "Brand B", 10.0, 4.0, "2024-09-01", "2 years"));
-    }
-
-    private static void viewProducts() {
-        System.out.println("Products available:");
-        for (Product product : productList) {
-            System.out.println(product.name + " - " + product.price);
-        }
     }
 }
