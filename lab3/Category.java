@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Category implements ID {
     private int id;
     private String name;
@@ -30,5 +33,13 @@ class Category implements ID {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

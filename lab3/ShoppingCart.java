@@ -1,7 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class ShoppingCart implements ID {
     private int id;
     private List<Product> productList = new ArrayList<>();
     private double sumOfOrder;
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public ShoppingCart(int id) {
         this.id = id;
