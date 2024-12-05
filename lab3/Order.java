@@ -16,6 +16,18 @@ class Order implements ID {
     private String contacts;
     private String orderNotes;
 
+    // Новый конструктор для Customer
+    public Order(int id, List<Product> productList, double total, String pickupPoint, String deliveryMethod) {
+        this.id = id;
+        this.productListInOrder = productList;
+        this.totalOrderAmount = total;
+        this.shippingAddress = pickupPoint;
+        this.payMethod = deliveryMethod;
+        this.dateOfReg = new Date(); // Текущая дата
+        this.orderStatus = "Новый"; // Начальный статус
+    }
+
+    // Полный конструктор
     public Order(int id, int orderNumber, Date dateOfReg, String orderStatus, List<Product> productListInOrder,
                  double totalOrderAmount, Date deliveryDate, String payMethod, String payStatus,
                  String shippingAddress, String contacts, String orderNotes) {
